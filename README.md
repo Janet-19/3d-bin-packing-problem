@@ -66,5 +66,16 @@ One orientation of each item: <img src="https://render.githubusercontent.com/ren
 
 Basic Logic of 3D-Bin-Packing Model:
 ---------------------
-The core logic of this model based on heuristic algorithm. To be specific,
-- 
+
+The code based on [enzoruiz](https://github.com/enzoruiz/3dbinpacking) implementation in Python. I made some improvements for better packing rate.
+
+The core logic of 3D-bin-packing model based on heuristic algorithm. To be specific:
+- From a list of items, items are sorted from the biggest to the smallest and be placed in such ordering into a list of bins simultaneously.
+- Orientation selection module: 
+  - Each item has 1-6 orientations to choose when it can be placed into a certain bin. Orientation selection module can choose the best orientation type when facing several optinal orientations.
+- Placement selection module: 
+  - Here a pivot point is used to determine item's position. The pivot is an (x, y, z) coordinate which represents a point in a particular 3D bin at which an attempt to pack an item will be made. The back lower left corner of the item will be placed at the pivot. If the item cannot be packed at the pivot position then it is rotated until it can be packed at the pivot point or until we have tried all 6 possible rotation types. If after rotating it, the item still cannot be packed at the pivot point, then we move on to packing another item and add the unpacked item to a list of items that will be packed after an attempt to pack the remaining items is made. The first pivot in an empty bin is always (0,0,0). When one item can be placed into multiple optinal pivot point, placement selection module can help make a choice.
+- Item stacking module:
+  - Here I tried item stacking module when one item is being placed into a certain box. Item stacking module helps determin whether to stack similar items before placement action.
+  - Since stacking module did not significantly increase the packing rate, I deleted it in the end.
+- After all items in item list are placed into bins in bin list, the bin size with the highest packing rate will be chosen as final decision.
