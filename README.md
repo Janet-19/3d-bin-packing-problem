@@ -52,16 +52,19 @@ Each item in one bin: <img src="https://render.githubusercontent.com/render/math
 Capacity constraint of each bin: <img src="https://render.githubusercontent.com/render/math?math=\sum_{i=0}^{UB-1} c_{i} x_{ij} \leq C_{j} y_{j}"> 
 
 Non-intersection between two items: 
-- <img src="https://render.githubusercontent.com/render/math?math=a_{im} %2B b_{im} %2B c_{im} = 1">
+- <img src="https://render.githubusercontent.com/render/math?math=a_{im} %2B a_{mi} %2B b_{im} %2B b_{mi} %2B c_{im} %2B c_{mi} \geq 1, i \neq m">
 - x-axis: <img src="https://render.githubusercontent.com/render/math?math=x_{i} %2B w_i(o_{i1} %2B o_{i4}) %2B l_i(o_{i2} %2B o_{i5}) %2B h_i(o_{i3} %2B o_{i6}) \leq x_{m} %2B M(1-a_{im}), i \neq m">
 - y-axis: <img src="https://render.githubusercontent.com/render/math?math=y_{i} %2B l_i(o_{i1} %2B o_{i6}) %2B w_i(o_{i2} %2B o_{i3}) %2B h_i(o_{i4} %2B o_{i5}) \leq y_{m} %2B M(1-b_{im}), i \neq m">
 - z-axis: <img src="https://render.githubusercontent.com/render/math?math=z_{i} %2B h_i(o_{i1} %2B o_{i2}) %2B l_i(o_{i3} %2B o_{i4}) %2B w_i(o_{i5} %2B o_{i6}) \leq z_{m} %2B M(1-c_{im}), i \neq m">
 
 All items within the bin dimension:
-- x-axis:
-- y-axis:
-- z-axis:
+- x-axis: <img src="https://render.githubusercontent.com/render/math?math=(x_{i} %2B w_i(o_{i1} %2B o_{i4}) %2B l_i(o_{i2} %2B o_{i5}) %2B h_i(o_{i3} %2B o_{i6})) x_{ij} \leq L_{j}">
+- y-axis: <img src="https://render.githubusercontent.com/render/math?math=(y_{i} %2B l_i(o_{i1} %2B o_{i6}) %2B w_i(o_{i2} %2B o_{i3}) %2B h_i(o_{i4} %2B o_{i5})) x_{ij} \leq W_{j}">
+- z-axis: <img src="https://render.githubusercontent.com/render/math?math=(z_{i} %2B h_i(o_{i1} %2B o_{i2}) %2B l_i(o_{i3} %2B o_{i4}) %2B w_i(o_{i5} %2B o_{i6})) x_{ij} \leq H_{j}">
+
+One orientation of each item: <img src="https://render.githubusercontent.com/render/math?math=o_{i1} %2B o_{i2} %2B o_{i3} %2B o_{i4} %2B o_{i5} %2B o_{i6} = 1">
 
 Basic Logic of 3D-Bin-Packing Model:
 ---------------------
-The core logic of this model is heuristic algorithm. To be specific, a list of items are placed into various sizes of bins simultaneously.
+The core logic of this model based on heuristic algorithm. To be specific,
+- 
