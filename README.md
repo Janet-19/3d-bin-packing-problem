@@ -4,6 +4,26 @@ The whole 3D Packing implementation based on the following two papers:
 - Li, Xueping & Zhao, Zhaoxia & Zhang, Kaike. (2014). [A genetic algorithm for the three-dimensional bin packing problem with heterogeneous bins](https://github.com/Janet-19/3d-bin-packing-problem/blob/master/Reference/3DBPP_ISERC_Final.revHEAD.pdf). IIE Annual Conference and Expo 2014. 
 - Dube, Erick & Kanavathy, Leon & K@i, Leon & Za, Owave. (2006). [Optimizing Three-Dimensional Bin Packing Through Simulation](https://github.com/Janet-19/3d-bin-packing-problem/blob/master/Reference/erick_dube_507-034.pdf). 
 
+Download & Usage:
+----------------
+
+The code based on [enzoruiz](https://github.com/enzoruiz/3dbinpacking) implementation in Python. I made some improvements for better packing rate.
+
+Download the whole [main_model](https://github.com/Janet-19/3d-bin-packing-problem/tree/master/main_model) folder. Open [example.ipynb](https://github.com/Janet-19/3d-bin-packing-problem/blob/master/main_model/example.ipynb) in Jupyter Notebook to see an example. You can change any parameter in the file for your usage. If you use PyCharm, just change filename extension from .ipynb to .py.
+
+**Basic parameters of items and bins:**
+
+Here are some basic parameters that need your setup towards items and bins:
+- Bin(name, length, width, height, capacity)
+  - For each bin, you need to enter its name, length, width, height, and capacity (the maximum weight it can hold).
+- Item(name, length, width, height, weight)
+  - For each item, you need to enter its name, length, width, height, and weight.
+
+**Basic usage of Packer class:**
+1. Create a variable of Packer() class. Click [here](https://github.com/Janet-19/3d-bin-packing-problem/blob/master/main_model/packer.ipynb) to see Packer() definition.
+2. Use *packer.add_bin()* and *packer.add_item()* to add items that needed packing and optional box types. Then, use *packer.pack()* to perform the whole packing process.
+3. After packing, fitted and unfitted items in each bin and the bin with the highest packing rate will be printed.
+
 Mathematical Formulation of 3D-Bin-Packing-Problem:
 ---------------------
 **The following variables are used for the mathematical formulation:**
@@ -67,8 +87,6 @@ One orientation of each item: <img src="https://render.githubusercontent.com/ren
 Basic Logic of 3D-Bin-Packing Model:
 ---------------------
 
-The code based on [enzoruiz](https://github.com/enzoruiz/3dbinpacking) implementation in Python. I made some improvements for better packing rate.
-
 The core logic of 3D-bin-packing model based on heuristic algorithm. To be specific:
 - From a list of items, items are sorted from the biggest to the smallest and be placed in such ordering into a list of bins simultaneously.
 - Orientation selection module: 
@@ -79,3 +97,4 @@ The core logic of 3D-bin-packing model based on heuristic algorithm. To be speci
   - Here I tried item stacking module when one item is being placed into a certain box. Item stacking module helps determin whether to stack similar items before placement action.
   - Since stacking module did not significantly increase the packing rate, I deleted it in the end.
 - After all items in item list are placed into bins in bin list, the bin size with the highest packing rate will be chosen as final decision.
+
